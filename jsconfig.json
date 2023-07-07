@@ -2,6 +2,10 @@
   "compilerOptions": {
     "paths": {
       "@/*": ["./src/*"]
-    }
-  }
+    },
+    "types": ["chrome"]
+  },
+  "globals": {
+    "chrome": true
+}
 }

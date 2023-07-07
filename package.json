@@ -3,16 +3,48 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
+    "dev": "npm-watch",
+    "lint:build": "mv out/_next out/assets && gsed -i 's/\\/_next/\\/assets/g' out/**.html",
+    "build": "next build && next export && npm run lint:build",
     "start": "next start",
     "lint": "next lint"
   },
   "dependencies": {
+    "@emotion/react": "^11.10.8",
+    "@emotion/styled": "^11.10.8",
+    "@mui/icons-material": "^5.11.16",
+    "@mui/material": "^5.12.3",
+    "@notionhq/client": "^2.2.4",
+    "@types/chrome": "^0.0.235",
     "eslint": "8.39.0",
     "eslint-config-next": "13.3.4",
+    "firebase": "^9.22.0",
     "next": "13.3.4",
     "react": "18.2.0",
     "react-dom": "18.2.0"
+  },
+  "devDependencies": {
+    "npm-watch": "^0.11.0"
+  },
+  "watch": {
+    "build": {
+      "patterns": [
+        "styles/**",
+        "pages/**",
+        "public/**",
+        "helpers/**",
+        "next.config.js"
+      ],
+      "ignore": [
+        "out",
+        "node_modules",
+        ".next",
+        ".vscode"
+      ],
+      "extensions": [
+        "js",
+        "json"
+      ]
+    }
   }
 }
